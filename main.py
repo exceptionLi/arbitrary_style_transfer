@@ -7,24 +7,19 @@ from generate import generate
 from utils import list_images
 
 
-IS_TRAINING = True
+IS_TRAINING = False
 
 ENCODER_WEIGHTS_PATH = './vgg19_normalised.npz'
 
-STYLE_WEIGHTS = [1.0, 0.5, 10.0, 0.1, 0.01]
+STYLE_WEIGHTS = [2.0]
 
 MODEL_SAVE_PATHS = [
-    'models/style_weight_1e0.ckpt',
-    'models/style_weight_5e-1.ckpt',
-    'models/style_weight_1e1.ckpt',
-    'models/style_weight_1e-1.ckpt',
-    'models/style_weight_1e-2.ckpt',
+    'models/style_weight_2e0.ckpt',
 ]
 
 STYLES = [
-    'wave', 'udnie', 'escher_sphere', 'flower', 
-    'scream', 'denoised_starry', 'rain_princess', 
-    'woman_matisse', 'mosaic'
+    'cat', 'mosaic', 'escher_sphere',
+    'lion', 'udnie', 'woman_matisse',
 ]
 
 
@@ -45,7 +40,7 @@ def main():
 
         for style_name in STYLES:
 
-            print('\nUse "%s.jpg" as style to generate images:')
+            print('\nUse "%s.jpg" as style to generate images:' % style_name)
 
             for style_weight, model_save_path in zip(STYLE_WEIGHTS, MODEL_SAVE_PATHS):
                 print('\nBegin to generate images with the style weight: %.2f ...\n' % style_weight)
